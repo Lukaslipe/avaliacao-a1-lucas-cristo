@@ -15,7 +15,7 @@ builder.Services.AddCors(
 
 var app = builder.Build();
 
-app.MapGet("/", () => "COLOQUE O SEU NOME");
+app.MapGet("/", () => "Lucas Felipe Cristo");
 
 //ENDPOINTS DE TAREFA
 //GET: http://localhost:5273/api/chamado/listar
