@@ -1,0 +1,19 @@
+### Listar todas os chamados
+GET http://localhost:5000/api/chamado/listar
+
+### Cadastrar um novo chamado
+POST http://localhost:5000/api/chamado/cadastrar
+Content-Type: application/json
+
+{
+    "descricao": "Trocar memórias"
+}
+
+### Editar um chamado
+PUT http://localhost:5000/api/chamado/alterar/2f1b7dc1-3b9a-4e1a-a389-7f5d2f1c8f3e
+
+### Listar chamados não resolvidos
+GET http://localhost:5000/api/chamado/naoresolvidos
+
+### Listar chamados resolvidos
+GET http://localhost:5000/api/chamado/resolvidos
