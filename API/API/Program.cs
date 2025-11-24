@@ -5,6 +5,14 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDataContext>();
 
+builder.Services.AddCors(
+    options => options.AddPolicy("Acesso Total",
+    configs => configs
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod())
+);
+
 var app = builder.Build();
 
 app.MapGet("/", () => "COLOQUE O SEU NOME");
@@ -74,5 +82,7 @@ app.MapGet("/api/chamado/resolvidos", ([FromServices] AppDataContext ctx) =>
     var query = ctx.Chamados.Where(c => c.Status == "Resolvido");
     return query.ToList();
 });
+
+app.UseCors("Acesso Total");
 
 app.Run();
