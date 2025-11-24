@@ -4,7 +4,6 @@ import ListarChamados from './components/Pages/Chamado/ListarChamados';
 import ListarChamadosResolvidos from './components/Pages/Chamado/ListarChamadosResolvidos';
 import ListarChamadosNaoResolvidos from './components/Pages/Chamado/ListarChamadosNaoResolvidos';
 import CadastrarChamado from './components/Pages/Chamado/CadastrarChamado';
-import AlterarChamado from './components/Pages/Chamado/AlterarChamado';
 
 function App() {
   return (
@@ -65,7 +64,6 @@ function App() {
             <Route path="/resolvidos" element={<ListarChamadosResolvidos />} />
             <Route path="/pendentes" element={<ListarChamadosNaoResolvidos />} />
             <Route path="/cadastrar" element={<CadastrarChamado />} />
-            <Route path="/alterar/:id" element={<AlterarChamado />} />
           </Routes>
         </div>
       </BrowserRouter>

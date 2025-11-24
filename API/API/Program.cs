@@ -57,7 +57,7 @@ app.MapPut("/api/chamado/alterar/{id}", ([FromServices] AppDataContext ctx, [Fro
         chamadoExistente.Status = "Resolvido";
     } else
     {
-        chamadoExistente.Status = "Deu errado";
+        chamadoExistente.Status = "Resolvido";
     }
 
     ctx.Chamados.Update(chamadoExistente);

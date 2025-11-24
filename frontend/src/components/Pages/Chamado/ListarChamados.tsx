@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Chamado from "../../../models/Chamado";
 import axios from "axios";
+import "./chamado.css";
 import { Link } from "react-router-dom";
 
 function ListarChamados() {
@@ -13,7 +14,6 @@ function ListarChamados() {
     async function buscarChamadosAPI() {
         try {
             const resposta = await axios.get<Chamado[]>("http://localhost:5000/api/chamado/listar");
-            console.log(resposta)
             setProdutos(resposta.data);
         } catch (error) {
             console.log("Erro ao buscar chamados:", error);
@@ -33,40 +33,28 @@ function ListarChamados() {
     }
 
     return (
-        <div>
+        <div className="chamados-container">
             <h1>Lista de chamados</h1>
             
-            <table border={1} style={{ 
-                width: '100%', 
-                borderCollapse: 'collapse',
-                marginTop: '20px'
-            }}>
+            <table className="chamados-table">
                 <thead>
-                    <tr style={{ backgroundColor: '#f0f0f0' }}>
-                        <th style={{ padding: '10px' }}>Descrição</th>
-                        <th style={{ padding: '10px' }}>Criado Em</th>
-                        <th style={{ padding: '10px' }}>Status</th>
-                        <th style={{ padding: '10px' }}>Ações</th>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Criado Em</th>
+                        <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     {chamados.map((chamado) => (
                         <tr key={chamado.chamadoId}>
-                            <td style={{ padding: '10px' }}>{chamado.descricao}</td>
-                            <td style={{ padding: '10px' }}>{chamado.criadoEm}</td>
-                            <td style={{ padding: '10px' }}>{chamado.status}</td>
-                            <td style={{ padding: '10px' }}>
+                            <td>{chamado.descricao}</td>
+                            <td>{chamado.criadoEm}</td>
+                            <td>{chamado.status}</td>
+                            <td className="actions-cell">
                                 <button 
+                                    className="action-btn edit-btn"
                                     onClick={() => editarChamado(chamado.chamadoId!)}
-                                    style={{ 
-                                        padding: '10px 20px', 
-                                        marginLeft: '10px',
-                                        backgroundColor: '#35982cff',
-                                        color: 'white',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        borderRadius: '6px'
-                                    }}
                                 >
                                     Alterar Status
                                 </button>

@@ -11,7 +11,6 @@ function CadastrarChamado() {
     async function enviarChamadoAPI(e: React.FormEvent) {
         e.preventDefault();
         
-        // Validação básica
         if (!descricao.trim()) {
             alert("Por favor, preencha a descricao do chamado!");
             return;
@@ -33,52 +32,37 @@ function CadastrarChamado() {
     }
 
     return (
-        <div>
+        <div className="form-container">
             <h1>Cadastrar novo chamado</h1>
             
             <form onSubmit={enviarChamadoAPI} style={{ maxWidth: '500px' }}>
                 
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>
+                <div className="form-group">
+                    <label>
                         Descrição:
                     </label>
                     <input 
                         type="text" 
                         value={descricao} 
                         onChange={(e) => setDescricao(e.target.value)}
-                        style={{ width: '100%', padding: '8px', border: '1px solid #ccc' }}
                     />
                 </div>
-
-                <button 
-                    type="submit" 
-                    style={{ 
-                        padding: '10px 20px', 
-                        backgroundColor: '#28a745',
-                        color: 'white',
-                        border: 'none',
-                        cursor: 'pointer',
-                        borderRadius: '6px'
-                    }}
-                >
-                    Cadastrar chamado
-                </button>
-                
-                <button 
-                    type="button" 
-                    onClick={() => navigate("/")}
-                    style={{ 
-                        padding: '10px 20px', 
-                        marginLeft: '10px',
-                        backgroundColor: '#6c757d',
-                        color: 'white',
-                        border: 'none',
-                        cursor: 'pointer',
-                        borderRadius: '6px'
-                    }}
-                >
-                    Cancelar
-                </button>
+                <div className="form-actions">
+                    <button 
+                        type="submit" 
+                        className="submit-btn"
+                    >
+                        Cadastrar chamado
+                    </button>
+                    
+                    <button 
+                        type="button" 
+                        className="cancel-btn"
+                        onClick={() => navigate("/")}
+                    >
+                        Cancelar
+                    </button>
+                </div>
             </form>
         </div>
     );
