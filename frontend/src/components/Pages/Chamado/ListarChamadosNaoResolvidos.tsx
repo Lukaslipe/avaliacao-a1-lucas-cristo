@@ -5,7 +5,7 @@ import "./chamado.css";
 import { Link } from "react-router-dom";
 
 function ListarChamadosNaoResolvidos() {
-    const [chamados, setProdutos] = useState<Chamado[]>([]);
+    const [chamados, setChamados] = useState<Chamado[]>([]);
 
     useEffect(() => {
         buscarChamadosAPI();
@@ -14,7 +14,7 @@ function ListarChamadosNaoResolvidos() {
     async function buscarChamadosAPI() {
         try {
             const resposta = await axios.get<Chamado[]>("http://localhost:5000/api/chamado/naoresolvidos");
-            setProdutos(resposta.data);
+            setChamados(resposta.data);
         } catch (error) {
             console.log("Erro ao buscar chamados:", error);
             alert("Erro ao carregar chamados!");

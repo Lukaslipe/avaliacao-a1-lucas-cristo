@@ -5,7 +5,7 @@ import "./chamado.css";
 import { Link } from "react-router-dom";
 
 function ListarChamados() {
-    const [chamados, setProdutos] = useState<Chamado[]>([]);
+    const [chamados, setChamados] = useState<Chamado[]>([]);
 
     useEffect(() => {
         buscarChamadosAPI();
@@ -14,7 +14,7 @@ function ListarChamados() {
     async function buscarChamadosAPI() {
         try {
             const resposta = await axios.get<Chamado[]>("http://localhost:5000/api/chamado/listar");
-            setProdutos(resposta.data);
+            setChamados(resposta.data);
         } catch (error) {
             console.log("Erro ao buscar chamados:", error);
             alert("Erro ao carregar chamados!");
@@ -66,7 +66,7 @@ function ListarChamados() {
 
             {chamados.length === 0 && (
                 <p style={{ marginTop: '20px', color: '#666' }}>
-                    Nenhum produto cadastrado.
+                    Nenhum chamado cadastrado.
                 </p>
             )}
         </div>
